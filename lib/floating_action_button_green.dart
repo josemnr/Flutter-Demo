@@ -9,7 +9,13 @@ class FloatingActionButtonGreen extends StatefulWidget {
 }
 
 class _FloatingActionButtonGreen extends State<FloatingActionButtonGreen> {
-  void onPressedFav() {}
+  bool _pressed = false;
+
+  void _onPressedFav() {
+    setState(() {
+      _pressed = !this._pressed;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +24,8 @@ class _FloatingActionButtonGreen extends State<FloatingActionButtonGreen> {
       backgroundColor: Color(0xFF11DA53),
       mini: true,
       tooltip: "Fav",
-      onPressed: onPressedFav,
-      child: Icon(Icons.favorite_border),
+      onPressed: _onPressedFav,
+      child: Icon(this._pressed ? Icons.favorite : Icons.favorite_border),
     );
   }
 }
